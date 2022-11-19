@@ -10,8 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path='/'
-            element={<PatientsList/>}
+            path="/"
+            element={ <PatientsList /> }
             exact
           />
         </Routes>
