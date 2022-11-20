@@ -1,21 +1,31 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import PatientsProvider from './Context/PatientsProvider';
 import PatientsList from './Pages/PatientsList';
+import AddPatients from './Pages/AddPatients';
 
 function App() {
   return (
     <PatientsProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={ <PatientsList /> }
-            exact
-          />
-        </Routes>
-      </BrowserRouter>
+      <LocalizationProvider dateAdapter={ AdapterDayjs }>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={ <PatientsList /> }
+              exact
+            />
+            <Route
+              path="/cadastro"
+              element={ <AddPatients /> }
+              exact
+            />
+          </Routes>
+        </BrowserRouter>
+      </LocalizationProvider>
     </PatientsProvider>
   );
 }
