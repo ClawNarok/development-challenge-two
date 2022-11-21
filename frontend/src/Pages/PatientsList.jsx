@@ -1,8 +1,9 @@
 import { Container } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CCreateButton from '../Components/CCreateButton';
+import CButton from '../Components/CButton';
 import CDataGrid from '../Components/CDataGrid';
+import Icons from '../Helpers/Icons';
 
 function PatientsList() {
   const navigate = useNavigate();
@@ -10,9 +11,10 @@ function PatientsList() {
   return (
     <Container>
       <h1>Patients</h1>
-      <CCreateButton
+      <CButton
         txtButton="Adicionar paciente"
         callback={ () => navigate('/cadastro') }
+        icon={ Icons.Add }
       />
       <CDataGrid />
     </Container>
