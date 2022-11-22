@@ -132,7 +132,7 @@ function AddPatients() {
           >
             {
               States.map((item, x) => (
-                <MenuItem key={ x } value={ item.acronym }>{ item.name }</MenuItem>))
+                <MenuItem key={ x } value={ item.acronym }>{ item.acronym }</MenuItem>))
             }
           </Select>
         </FormControl>
