@@ -19,7 +19,12 @@ function App() {
               exact
             />
             <Route
-              path="/cadastro"
+              path="/cadastrar"
+              element={ <AddPatients /> }
+              exact
+            />
+            <Route
+              path="/editar/:id"
               element={ <AddPatients /> }
               exact
             />
