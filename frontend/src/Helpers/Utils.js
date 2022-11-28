@@ -82,4 +82,10 @@ const States = [
   },
 ];
 
-export default States;
+const formatDate = (bDate) => `${('0'+ bDate.date()).slice(-2)}/${bDate.month() + 1}/${bDate.year()}`;
+
+const isPositiveNumber = (n) => (!Number.isNaN(n)
+  && parseInt(n, 10) > 0 && parseInt(n, 10) === Number(n)
+  && (parseInt(n, 10)).toString() === n);
+
+export { States, formatDate, isPositiveNumber };
