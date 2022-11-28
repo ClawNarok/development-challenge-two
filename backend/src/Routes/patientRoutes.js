@@ -1,8 +1,9 @@
-const { Router } = require('express');
-const patientController = require('../Controllers/patientController');
+const patientRoute = {
+  GET: (e) => console.log('Get: ', JSON.stringify(e)),
+  POST: (e) => console.log('Post: ', JSON.stringify(e)),
+  PUT: (e) => console.log('Put: ', JSON.stringify(e)),
+  DELETE: (e) => console.log('Delete: ', JSON.stringify(e)),
+};
 
-const patientRoute = Router();
-
-patientRoute.get('/', patientController.getAll);
-
-module.exports = patientRoute;
+// module.exports = patientRoute;
+export default patientRoute;
