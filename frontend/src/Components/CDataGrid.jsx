@@ -13,6 +13,7 @@ function CDataGrid({ callback }) {
     { field: 'addressName', headerName: 'Endereço', width: 210 },
     { field: 'addressNumber', headerName: 'Número', width: 70 },
     { field: 'complement', headerName: 'Complemento', width: 90 },
+    { field: 'neighborhood', headerName: 'Bairro', width: 100 },
     { field: 'city', headerName: 'Cidade', width: 130 },
     { field: 'state', headerName: 'Estado', width: 70 },
     { field: 'postal', headerName: 'CEP', width: 100 },
