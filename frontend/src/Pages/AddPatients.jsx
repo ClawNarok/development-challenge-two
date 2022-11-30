@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import CButton from '../Components/CButton';
 import { States, isPositiveNumber, formatDate } from '../Helpers/Utils';
 import PatientsContext from '../Context/PatientsContext';
+import { Box } from '@mui/system';
 
 function AddPatients() {
   const [cadastro, setCadastro] = useState(true);
@@ -29,6 +30,7 @@ function AddPatients() {
   const [state, setState] = useState('');
   const [postal, setPostal] = useState('');
   const [complement, setComplement] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
   const [reqBody, setReqBody] = useState();
   const [patient, setPatient] = useState();
   const navigate = useNavigate();
@@ -52,6 +54,7 @@ function AddPatients() {
     setEmail(data.email);
     setAddressName(data.addressName);
     setAddressNumber(data.addressNumber);
+    setNeighborhood(data.neighborhood);
     setCity(data.city);
     setState(data.state);
     setPostal(data.postal);
@@ -88,6 +91,7 @@ function AddPatients() {
       email,
       addressName,
       addressNumber,
+      neighborhood,
       city,
       state,
       postal,
@@ -117,19 +121,20 @@ function AddPatients() {
   const validateDate = (value) => value && value.isValid() && dayjs() - birthDate >= 0;
 
   const checkValidateFields = () => {
-    const valid = true;
+    let value = true;
     if (!validateText(firstName, MINLENGTHNAME)) value = false;
     if (!validateText(lastName, MINLENGTHNAME)) value = false;
     if (!validateRegex(email, regexEmail)) value = false;
     if (!validateRegex(postal, regexPostal)) value = false;
     if (!validateDate(birthDate)) value = false;
-    return valid;
+    return value;
   };
 
   const checkRequiredFields = () => {
     let valid = true;
     if (!validateText(addressName)) valid = false;
     if (!validateText(addressNumber)) valid = false;
+    if (!validateText(neighborhood)) valid = false;
     if (!validateText(city)) valid = false;
     if (!validateText(state)) valid = false;
     return valid;
@@ -204,6 +209,13 @@ function AddPatients() {
           variant="outlined"
           value={ complement }
           onChange={ ({ target }) => handleChange(setComplement, target.value) }
+        />
+        <TextField
+          required
+          label="Bairro"
+          variant="outlined"
+          value={ neighborhood }
+          onChange={ ({ target }) => handleChange(setNeighborhood, target.value) }
         />
         <TextField
           required
