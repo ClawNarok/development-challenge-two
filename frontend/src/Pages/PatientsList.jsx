@@ -6,6 +6,7 @@ import PatientsContext from '../Context/PatientsContext';
 import CButton from '../Components/CButton';
 import CDataGrid from '../Components/CDataGrid';
 import Icons from '../Helpers/Icons';
+import CFilter from '../Components/CFilter';
 
 function PatientsList() {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ function PatientsList() {
         disabled={ !patientId }
         icon={ Icons.Delete }
       />
+      <CFilter />
       <Box style={ { height: 400, width: '100%' } }>
         <CDataGrid
           callback={ (value) => setpatientId(value) }
