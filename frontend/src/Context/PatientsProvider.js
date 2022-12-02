@@ -10,28 +10,27 @@ import {
 
 function PatientsProvider({ children }) {
   const [patients, setPatients] = useState([]);
+  const [patientsFiltered, setPatientsFiltered] = useState([]);
 
   const getPatients = async () => {
     const retorno = await getAllPatients();
     setPatients(retorno);
+    setPatientsFiltered(retorno);
   };
 
   const deletePatient = async (id) => {
     await deletePatientById(id);
-    const retorno = await getAllPatients();
-    setPatients(retorno);
+    await getPatients();
   };
 
   const createPatient = async (body) => {
     await addPatient(body);
-    const retorno = await getAllPatients();
-    setPatients(retorno);
+    await getPatients();
   };
 
   const updatePatient = async (body, id) => {
     await updatePatientById(body, id);
-    const retorno = await getAllPatients();
-    setPatients(retorno);
+    await getPatients();
   };
 
   const getById = async (id, callback) => {
@@ -43,6 +42,8 @@ function PatientsProvider({ children }) {
     const values = {
       patients,
       setPatients,
+      patientsFiltered,
+      setPatientsFiltered,
       getPatients,
       getById,
       createPatient,
@@ -50,7 +51,7 @@ function PatientsProvider({ children }) {
       deletePatient,
     };
     return values;
-  }, [patients]);
+  }, [patients, patientsFiltered]);
 
   return (
     <PatientsContext.Provider value={ memo }>
