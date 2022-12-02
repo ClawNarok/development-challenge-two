@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import PatientsContext from '../Context/PatientsContext';
 
 function CDataGrid({ callback }) {
-  const { patients } = useContext(PatientsContext);
+  const { patientsFiltered } = useContext(PatientsContext);
   const columnName = [
     { field: 'firstName', headerName: 'Nome', width: 210 },
     { field: 'lastName', headerName: 'Sobrenome', width: 210 },
@@ -19,12 +19,11 @@ function CDataGrid({ callback }) {
     { field: 'postal', headerName: 'CEP', width: 100 },
   ];
 
-  // const rows = [];
   const COUNTROWS = 5;
   return (
     <DataGrid
       columns={ columnName }
-      rows={ patients }
+      rows={ patientsFiltered }
       pageSize={ 5 }
       rowsPerPageOptions={ [COUNTROWS] }
       onCellClick={ (cell) => callback(cell.id) }
