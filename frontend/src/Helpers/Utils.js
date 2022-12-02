@@ -88,4 +88,18 @@ const isPositiveNumber = (n) => (!Number.isNaN(n)
   && parseInt(n, 10) > 0 && parseInt(n, 10) === Number(n)
   && (parseInt(n, 10)).toString() === n);
 
-export { States, formatDate, isPositiveNumber };
+const makeArray = (start, end) => {
+  const array = [];
+  if (start < end) {
+    for (let x = start; x <= end; x++) {
+      array.push(x);
+    }
+  } else {
+    for (let x = start; x >= end; x--) {
+      array.push(x);
+    }
+  }
+  return array;
+}
+
+  export { States, formatDate, isPositiveNumber, makeArray };
